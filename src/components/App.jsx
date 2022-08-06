@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Wrapper from './App.styled';
-import SearchBar from './SearchBar/SearchBar';
+import { SearchBar } from './SearchBar/SearchBar';
 
 class App extends Component {
   state = {};

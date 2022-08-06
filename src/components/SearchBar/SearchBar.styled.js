@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MainHeader = styled.header`
+export const MainHeader = styled.header`
   top: 0;
   left: 0;
   position: sticky;
@@ -19,4 +19,13 @@ const MainHeader = styled.header`
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
-export default MainHeader;
+export const Input = styled.input`
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding-left: 4px;
+  padding-right: 4px;
+`;

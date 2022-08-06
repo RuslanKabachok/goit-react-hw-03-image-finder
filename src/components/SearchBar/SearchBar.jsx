@@ -1,7 +1,9 @@
-import MainHeader from './SearchBar.styled';
+import { MainHeader, Input } from './SearchBar.styled';
 
-const SearchBar = () => {
-  return <MainHeader></MainHeader>;
+export const SearchBar = () => {
+  return (
+    <MainHeader>
+      <Input></Input>
+    </MainHeader>
+  );
 };
-
-export default SearchBar;
