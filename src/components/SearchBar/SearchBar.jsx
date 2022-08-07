@@ -8,13 +8,26 @@ import {
 } from './SearchBar.styled';
 
 class SearchBar extends Component {
-  state = {};
+  state = {
+    search: '',
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state.search);
+    this.props.onSubmit(this.state);
+    this.setState({ search: '' });
+  };
+
+  handleChange = e => {
+    this.setState({ search: e.currentTarget.value });
+  };
 
   render() {
     return (
       <MainHeader>
-        <SearchForm>
-          <SearchBtn>
+        <SearchForm onSubmit={this.handleSubmit}>
+          <SearchBtn type="submit">
             Search
             <SearchLabel>Search</SearchLabel>
           </SearchBtn>
@@ -23,6 +36,8 @@ class SearchBar extends Component {
             autocomplete="off"
             autoFocus
             placeholder="Search images and photos"
+            onChange={this.handleChange}
+            value={this.state.search}
           />
         </SearchForm>
       </MainHeader>
@@ -31,3 +46,5 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
+
+//https://pixabay.com/api/?q=cat&page=1&key=25284059-64aa950e28f1ef43b7bf646a1&image_type=photo&orientation=horizontal&per_page=12

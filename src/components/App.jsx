@@ -7,10 +7,16 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 class App extends Component {
   state = {};
 
+  componentDidMount() {}
+
+  todo({ search }) {
+    console.log('search:', search);
+  }
+
   render() {
     return (
       <Wrapper>
-        <SearchBar></SearchBar>
+        <SearchBar onSubmit={this.todo}></SearchBar>
         <ImageGallery></ImageGallery>
         {/* <p>Loading...</p> */}
       </Wrapper>
