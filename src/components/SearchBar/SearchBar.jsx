@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { toast } from 'react-toastify';
 import {
   MainHeader,
   Input,
@@ -14,13 +15,18 @@ class SearchBar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.search);
-    this.props.onSubmit(this.state);
+
+    if (this.state.search.trim() === '') {
+      // toast.error('Search cannot be empty.');
+      alert('Search cannot be empty.');
+      return;
+    }
+    this.props.onSubmit(this.state.search);
     this.setState({ search: '' });
   };
 
   handleChange = e => {
-    this.setState({ search: e.currentTarget.value });
+    this.setState({ search: e.currentTarget.value.toLowerCase() });
   };
 
   render() {
@@ -46,5 +52,3 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
-
-//https://pixabay.com/api/?q=cat&page=1&key=25284059-64aa950e28f1ef43b7bf646a1&image_type=photo&orientation=horizontal&per_page=12
