@@ -22,14 +22,11 @@ export default class ImageGallery extends Component {
   render() {
     return (
       <GalleryList>
-        {' '}
         {this.state.array &&
           this.state.array.map(item => (
             <GalleryItem item={item} key={item.id}></GalleryItem>
-          ))}{' '}
+          ))}
       </GalleryList>
     );
   }
 }
-//GalleryItem(this.state.searchQuery)
-//this.props.searchQuery
