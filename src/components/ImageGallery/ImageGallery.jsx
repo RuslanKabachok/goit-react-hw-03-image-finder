@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GalleryList } from './ImageGallery.styled';
-import { GalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import css from '../ImageGalleryItem/ImageGalleryItem.module.css';
 
 export default class ImageGallery extends Component {
   state = {
@@ -24,7 +24,13 @@ export default class ImageGallery extends Component {
       <GalleryList>
         {this.state.array &&
           this.state.array.map(item => (
-            <GalleryItem item={item} key={item.id}></GalleryItem>
+            <li key={item.id} className={css.list}>
+              <img
+                src={item.largeImageURL}
+                alt={item.tags}
+                className={css.image}
+              />
+            </li>
           ))}
       </GalleryList>
     );

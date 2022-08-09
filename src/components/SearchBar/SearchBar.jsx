@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { toast } from 'react-toastify';
 import {
   MainHeader,
   Input,
@@ -17,7 +16,6 @@ class SearchBar extends Component {
     e.preventDefault();
 
     if (this.state.search.trim() === '') {
-      // toast.error('Search cannot be empty.');
       alert('Search cannot be empty.');
       return;
     }

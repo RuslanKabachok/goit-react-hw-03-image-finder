@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-// import { ToastContainer } from 'react-toastify';
-// import axios from 'axios';
 import Wrapper from './App.styled';
 import SearchBar from './SearchBar/SearchBar';
 import ImageGallery from './ImageGallery/ImageGallery';
-// import { Loader } from './Loader/Loader';
 
 class App extends Component {
   state = { images: null, keyWord: '', loading: false };
@@ -28,7 +25,6 @@ class App extends Component {
         <SearchBar onSubmit={this.onSearch}></SearchBar>
         <ImageGallery searchQuery={this.state.keyWord}></ImageGallery>
         {this.state.loading && <p>Loading...</p>}
-        {/* <ToastContainer autoClose={3000} /> */}
       </Wrapper>
     );
   }
