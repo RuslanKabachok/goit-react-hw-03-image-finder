@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GalleryList } from './ImageGallery.styled';
-// import { GalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { GalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export default class ImageGallery extends Component {
   state = {
@@ -12,17 +12,21 @@ export default class ImageGallery extends Component {
       fetch(
         `https://pixabay.com/api/?q=${this.props.searchQuery}&page=1&key=25284059-64aa950e28f1ef43b7bf646a1&image_type=photo&orientation=horizontal&per_page=12`
       )
-        .then(response => response.json())
-        .then(console.log)
-        .then(array => this.setState({ array }));
+        .then(response => {
+          return response.json();
+        })
+        .then(({ hits }) => this.setState({ array: hits }));
     }
-    console.log(this.state.array);
   }
 
   render() {
     return (
       <GalleryList>
-        {this.state.array && <p>{this.state.array.total}</p>}
+        {' '}
+        {this.state.array &&
+          this.state.array.map(item => (
+            <GalleryItem item={item} key={item.id}></GalleryItem>
+          ))}{' '}
       </GalleryList>
     );
   }
