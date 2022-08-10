@@ -42,7 +42,6 @@ class App extends Component {
   };
 
   handleKeyPress = e => {
-    console.log(e);
     if (e.code === 'Escape') {
       this.setState({ showModal: false });
       window.removeEventListener('keydown', this.handleKeyPress);
