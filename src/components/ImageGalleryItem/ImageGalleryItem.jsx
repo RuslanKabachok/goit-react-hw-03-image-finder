@@ -10,8 +10,7 @@ export const GalleryItem = ({ mainImg, largeImg, onModal }) => {
 };
 
 // ImageGalleryItem.propTypes = {
-//   img: PropTypes.string.isRequired,
-//   tag: PropTypes.string.isRequired,
-//   bigImg: PropTypes.string.isRequired,
+//   mainImg: PropTypes.string.isRequired,
+//   largeImg: PropTypes.string.isRequired,
 //   onModal: PropTypes.func.isRequired,
 // };

@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { ModalWindow, BackDrop } from './Modal.styled';
 
 export const Modal = ({ largeImg, closeModal }) => {
@@ -11,7 +11,7 @@ export const Modal = ({ largeImg, closeModal }) => {
   );
 };
 
-// Modal.propTypes = {
-//   bigImg: PropTypes.string.isRequired,
-//   closeModal: PropTypes.func.isRequired,
-// };
+Modal.propTypes = {
+  largeImg: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};

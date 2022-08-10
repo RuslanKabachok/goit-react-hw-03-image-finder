@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { GalleryList } from './ImageGallery.styled';
 import { GalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
@@ -17,13 +17,13 @@ export const ImageGallery = ({ images, openModal }) => {
   );
 };
 
-// ImageGallery.propTypes = {
-//   images: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       webformatURL: PropTypes.string.isRequired,
-//       largeImageURL: PropTypes.string.isRequired,
-//     })
-//   ),
-//   openModal: PropTypes.func.isRequired,
-// };
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+    })
+  ),
+  openModal: PropTypes.func.isRequired,
+};

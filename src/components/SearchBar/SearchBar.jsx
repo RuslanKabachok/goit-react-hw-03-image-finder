@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { FaSearch } from 'react-icons/fa';
 import {
   MainHeader,
@@ -28,7 +28,7 @@ const SearchBar = ({ onSubmit }) => {
   );
 };
 
-// SearchBar.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 export default SearchBar;
