@@ -4,6 +4,7 @@ import Wrapper from './App.styled';
 import SearchBar from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Modal } from './Modal/Modal';
+import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 
 class App extends Component {
@@ -21,6 +22,12 @@ class App extends Component {
   onSearch = e => {
     e.preventDefault();
     this.setState({ keyWord: e.target.elements.search.value });
+  };
+
+  onLoadMore = () => {
+    this.setState(prevState => {
+      return { page: prevState.page + 1 };
+    });
   };
 
   openModal = largeImageItem => {
@@ -85,8 +92,13 @@ class App extends Component {
     return (
       <Wrapper>
         <SearchBar onSubmit={this.onSearch} />
-        <ImageGallery images={this.state.images} openModal={this.openModal} />
+        {this.state.images.length > 0 && (
+          <ImageGallery images={this.state.images} openModal={this.openModal} />
+        )}
         {this.state.loading && <Loader />}
+        {this.state.images.length > 0 && this.state.totalHits > 12 && (
+          <Button loadMore={this.onLoadMore} />
+        )}
         {this.state.showModal && (
           <Modal
             largeImg={this.state.largeImage}
