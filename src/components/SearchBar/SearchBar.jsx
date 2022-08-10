@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+import { FaSearch } from 'react-icons/fa';
 import {
   MainHeader,
   Input,
@@ -7,46 +8,27 @@ import {
   SearchLabel,
 } from './SearchBar.styled';
 
-class SearchBar extends Component {
-  state = {
-    search: '',
-  };
+const SearchBar = ({ onSubmit }) => {
+  return (
+    <MainHeader>
+      <SearchForm onSubmit={onSubmit}>
+        <SearchBtn type="submit">
+          <FaSearch size={20} />
+          <SearchLabel>Search</SearchLabel>
+        </SearchBtn>
+        <Input
+          type="text"
+          autocomplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+          name="search"
+        />
+      </SearchForm>
+    </MainHeader>
+  );
+};
 
-  handleSubmit = e => {
-    e.preventDefault();
-
-    if (this.state.search.trim() === '') {
-      alert('Search cannot be empty.');
-      return;
-    }
-    this.props.onSubmit(this.state.search);
-    this.setState({ search: '' });
-  };
-
-  handleChange = e => {
-    this.setState({ search: e.currentTarget.value.toLowerCase() });
-  };
-
-  render() {
-    return (
-      <MainHeader>
-        <SearchForm onSubmit={this.handleSubmit}>
-          <SearchBtn type="submit">
-            Search
-            <SearchLabel>Search</SearchLabel>
-          </SearchBtn>
-          <Input
-            type="text"
-            autocomplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            onChange={this.handleChange}
-            value={this.state.search}
-          />
-        </SearchForm>
-      </MainHeader>
-    );
-  }
-}
-
+// SearchBar.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
 export default SearchBar;

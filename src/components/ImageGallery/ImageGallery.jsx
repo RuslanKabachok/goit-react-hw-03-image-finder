@@ -1,46 +1,29 @@
-import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import { GalleryList } from './ImageGallery.styled';
 import { GalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
-import { GalleryImage } from './ImageGallery.styled';
-// import css from '../ImageGalleryItem/ImageGalleryItem.module.css';
 
-export default class ImageGallery extends Component {
-  state = {
-    array: null,
-  };
+export const ImageGallery = ({ images, openModal }) => {
+  return (
+    <GalleryList>
+      {images.map(item => (
+        <GalleryItem
+          key={item.id}
+          onModal={openModal}
+          mainImg={item.webformatURL}
+          largeImg={item.largeImageURL}
+        ></GalleryItem>
+      ))}
+    </GalleryList>
+  );
+};
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.searchQuery !== this.props.searchQuery) {
-      fetch(
-        `https://pixabay.com/api/?q=${this.props.searchQuery}&page=1&key=25284059-64aa950e28f1ef43b7bf646a1&image_type=photo&orientation=horizontal&per_page=12`
-      )
-        .then(response => {
-          return response.json();
-        })
-        .then(({ hits }) => this.setState({ array: hits }));
-    }
-  }
-
-  render() {
-    return (
-      <GalleryList>
-        {this.state.array &&
-          this.state.array.map(item => (
-            <GalleryItem key={item.id}>
-              <GalleryImage
-                src={item.largeImageURL}
-                alt={item.tags}
-              ></GalleryImage>
-            </GalleryItem>
-            // <li key={item.id} className={css.list}>
-            //   <img
-            //     src={item.largeImageURL}
-            //     alt={item.tags}
-            //     className={css.image}
-            //   />
-            // </li>
-          ))}
-      </GalleryList>
-    );
-  }
-}
+// ImageGallery.propTypes = {
+//   images: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       webformatURL: PropTypes.string.isRequired,
+//       largeImageURL: PropTypes.string.isRequired,
+//     })
+//   ),
+//   openModal: PropTypes.func.isRequired,
+// };
